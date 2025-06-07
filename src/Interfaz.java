@@ -30,12 +30,44 @@ public class Interfaz extends JFrame {
         button4.setFont(new Font("Arial", Font.PLAIN, 18));
         button4.setBounds(920, 620, 100, 30); // Posición y tamaño
 
+        // Acción del botón "Libros"
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EstructuraDatos ventanaLibros = new EstructuraDatos();
+                ventanaLibros.setVisible(true);
+                dispose(); // Cierra la ventana actual
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BasicsFunctions windowgest = new BasicsFunctions();
+                windowgest.setVisible(true);
+                dispose(); // Cierra la ventana actual
+            }
+        });
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Estadísticas status = new Estadísticas();
+                status.setVisible(true);
+                dispose(); // Cierra la ventana actual
+            }
+        });
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0); // Finaliza todo
+            }
+        });
         add(label1);
         add(button1);
         add(button2);
         add(button3);
         add(button4);
     }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Interfaz ventana = new Interfaz();
