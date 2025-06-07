@@ -14,22 +14,27 @@ public class Interfaz extends JFrame {
         setLocationRelativeTo(null);
 
         setLayout(null);
-        JLabel etiqueta = new JLabel("¡Bienvenido a tu biblioteca personal!");
-        etiqueta.setFont(new Font("Arial", Font.PLAIN, 28));
-        etiqueta.setBounds(300, 100, 600, 40); // Posición y tamaño
-        JButton boton = new JButton("¿Listo?");
-        boton.setFont(new Font("Arial", Font.PLAIN, 28));
-        boton.setBounds(440, 200, 200, 50); // Posición y tamaño
+        JLabel label1 = new JLabel("¡Bienvenido a tu biblioteca personal!");
+        label1.setFont(new Font("Arial", Font.PLAIN, 28));
+        label1.setBounds(300, 20, 600, 40); // Posición y tamaño
+        JButton button1 = new JButton("Libros");
+        button1.setFont(new Font("Arial", Font.PLAIN, 28));
+        button1.setBounds(180, 110, 220, 50); // Posición y tamaño
+        JButton button2 = new JButton("Gestión");
+        button2.setFont(new Font("Arial", Font.PLAIN, 28));
+        button2.setBounds(420, 110, 220, 50); // Posición y tamaño
+        JButton button3 = new JButton("Estadísticas");
+        button3.setFont(new Font("Arial", Font.PLAIN, 28));
+        button3.setBounds(660, 110, 220, 50); // Posición y tamaño
+        JButton button4 = new JButton("Salir");
+        button4.setFont(new Font("Arial", Font.PLAIN, 18));
+        button4.setBounds(920, 620, 100, 30); // Posición y tamaño
 
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                etiqueta.setText("¡Hora de iniciar!");
-            }
-        });
-
-        add(etiqueta);
-        add(boton);
+        add(label1);
+        add(button1);
+        add(button2);
+        add(button3);
+        add(button4);
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
