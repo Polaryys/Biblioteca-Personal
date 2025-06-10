@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Funcionalidades_Basicas.Libros;
 
 public class BasicsFunctions extends JFrame {
-
+    private ArrayList<Libros> listaLibros = new ArrayList<>();
     public BasicsFunctions() {
         setTitle("Gestión");
         setSize(1080, 720);
@@ -50,31 +52,64 @@ public class BasicsFunctions extends JFrame {
         label2.setBounds(640, 50, 600, 40);
         add(label2);
 
-        JTextField campoTexto2 = new JTextField();
-        campoTexto2.setFont(new Font("Arial", Font.PLAIN, 24));
-        campoTexto2.setBounds(640, 100, 300, 40);
-        add(campoTexto2);
+        JTextField campoTitulo = new JTextField();
+        campoTitulo.setFont(new Font("Arial", Font.PLAIN, 24));
+        campoTitulo.setBounds(640, 100, 300, 40);
+        add(campoTitulo);
 
-        JTextField campoTexto3 = new JTextField();
-        campoTexto3.setFont(new Font("Arial", Font.PLAIN, 24));
-        campoTexto3.setBounds(640, 150, 300, 40);
-        add(campoTexto3);
+        JTextField campoAutor = new JTextField();
+        campoAutor.setFont(new Font("Arial", Font.PLAIN, 24));
+        campoAutor.setBounds(640, 150, 300, 40);
+        add(campoAutor);
 
-        JTextField campoTexto4 = new JTextField();
-        campoTexto4.setFont(new Font("Arial", Font.PLAIN, 24));
-        campoTexto4.setBounds(640, 200, 300, 40);
-        add(campoTexto4);
+        JTextField campoGenero = new JTextField();
+        campoGenero.setFont(new Font("Arial", Font.PLAIN, 24));
+        campoGenero.setBounds(640, 200, 300, 40);
+        add(campoGenero);
 
-        JTextField campoTexto5 = new JTextField();
-        campoTexto5.setFont(new Font("Arial", Font.PLAIN, 24));
-        campoTexto5.setBounds(640, 250, 300, 40);
-        add(campoTexto5);
+        JTextField campoAñoPublicacion = new JTextField();
+        campoAñoPublicacion.setFont(new Font("Arial", Font.PLAIN, 24));
+        campoAñoPublicacion.setBounds(640, 250, 300, 40);
+        add(campoAñoPublicacion);
 
-        JButton button3 = new JButton("Crear");
-        button3.setFont(new Font("Arial", Font.PLAIN, 18));
-        button3.setBounds(640, 300, 100, 30);
-        add(button3);
+        JButton buttonCrear = new JButton("Crear");
+        buttonCrear.setFont(new Font("Arial", Font.PLAIN, 18));
+        buttonCrear.setBounds(640, 300, 100, 30);
+        add(buttonCrear);
+
+
+        buttonCrear.addActionListener(e -> {
+        String titulo = campoTitulo.getText();
+        String autor = campoAutor.getText();
+        String genero = campoGenero.getText();
+        int anio;
+        try {
+            anio = Integer.parseInt(campoAñoPublicacion.getText());
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "El año debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (titulo.isEmpty() || autor.isEmpty() || genero.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Libros nuevoLibro = new Libros(titulo, autor, genero, anio);
+        listaLibros.add(nuevoLibro);
+
+        JOptionPane.showMessageDialog(this, "Libro agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpiar campos
+        campoTitulo.setText("");
+        campoAutor.setText("");
+        campoGenero.setText("");
+        campoAñoPublicacion.setText("");
+    });
+    
     }
+
+    
 
     private void agregarPrestamoLibros() {
         JLabel label3 = new JLabel("Préstamo de Libros");
