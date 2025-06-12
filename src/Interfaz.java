@@ -13,6 +13,9 @@ public class Interfaz extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
+        ImageIcon icono = new ImageIcon(getClass().getResource("/Resources/Books.png"));
+    setIconImage(icono.getImage()); 
+        
         setLayout(null);
         JLabel label1 = new JLabel("¡Bienvenido a tu biblioteca personal!");
         label1.setFont(new Font("Arial", Font.PLAIN, 28));
