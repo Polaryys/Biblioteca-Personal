@@ -2,9 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//Cambios
 public class Estadísticas extends JFrame {
-
     public Estadísticas() {
         setTitle("Gestión");
         setSize(1080, 720);
