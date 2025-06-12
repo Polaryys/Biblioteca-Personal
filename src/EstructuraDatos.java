@@ -77,7 +77,7 @@ public class EstructuraDatos extends JFrame {
         JLabel label = new JLabel(" ");
         label.setFont(new Font("Segoe UI", Font.PLAIN, 20));
         label.setBounds(x, y, 450, 40);
-        label.setBackground(new Color(224, 224, 224));
+        label.setBackground(new Color(255, 255, 255));
         label.setOpaque(true);
         label.setBorder(BorderFactory.createLineBorder(new Color(192, 192, 192), 1, true)); // Bordes redondeados
         label.setForeground(new Color(50, 50, 50));
