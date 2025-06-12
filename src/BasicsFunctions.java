@@ -20,7 +20,7 @@ public class BasicsFunctions extends JFrame {
         agregarBotonAtras();
     }
 
-    // Método para crear JTextField con estilo uniforme
+  
     private JTextField crearCampoTextoEstilizado(int x, int y, int ancho, int alto) {
         JTextField campoTexto = new JTextField();
         campoTexto.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -35,7 +35,6 @@ public class BasicsFunctions extends JFrame {
         return campoTexto;
     }
 
-    // Método para estilizar los botones Crear, Recibir y Realizar con tonos verdes
     private void estilizarBotonVerde(JButton boton) {
         boton.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         boton.setFocusPainted(false);
@@ -113,49 +112,52 @@ public class BasicsFunctions extends JFrame {
         label2.setBounds(550, 30, 600, 40);
         add(label2);
 
-        JTextField campoTexto2 = crearCampoTextoEstilizado(550, 80, 300, 40);
-        add(campoTexto2);
+        JTextField campoTitulo = crearCampoTextoEstilizado(550, 80, 300, 40);
+        add(campoTitulo);
 
-        JTextField campoTexto3 = crearCampoTextoEstilizado(550, 130, 300, 40);
-        add(campoTexto3);
+        JTextField campoAutor = crearCampoTextoEstilizado(550, 130, 300, 40);
+        add(campoAutor);
 
-        JTextField campoTexto4 = crearCampoTextoEstilizado(550, 180, 300, 40);
-        add(campoTexto4);
+        JTextField campoGenero = crearCampoTextoEstilizado(550, 180, 300, 40);
+        add(campoGenero);
 
-        JTextField campoTexto5 = crearCampoTextoEstilizado(550, 230, 300, 40);
-        add(campoTexto5);
+        JTextField campoAñoPublicacion = crearCampoTextoEstilizado(550, 230, 300, 40);
+        add(campoAñoPublicacion);
 
-        JTextField campoTexto11 = crearCampoTextoEstilizado(550, 280, 300, 40);
-        add(campoTexto11);
+        JTextField campoCantidad = crearCampoTextoEstilizado(550, 280, 300, 40);
+        add(campoCantidad);
 
-        JButton button3 = new JButton("Crear");
-        button3.setBounds(880, 285, 100, 30);
-        estilizarBotonVerde(button3);
-        add(button3);
+        JButton buttonCrear = new JButton("Crear");
+        buttonCrear.setBounds(880, 285, 100, 30);
+        estilizarBotonVerde(buttonCrear);
+        add(buttonCrear);
     }
 
     private void agregarPrestamoLibros() {
         JLabel label3 = new JLabel("Préstamo de Libros");
         label3.setFont(new Font("Arial", Font.BOLD, 24));
-        label3.setBounds(100, 350, 600, 40);
+        label3.setBounds(100, 300, 600, 40);
         add(label3);
 
-        JTextField campoTexto6 = crearCampoTextoEstilizado(100, 400, 275, 40);
-        add(campoTexto6);
+        JTextField campoTitulo = crearCampoTextoEstilizado(100, 350, 275, 40);
+        add(campoTitulo);
 
-        JTextField campoTexto7 = crearCampoTextoEstilizado(100, 450, 275, 40);
-        add(campoTexto7);
+        JTextField campoAutor = crearCampoTextoEstilizado(100, 400, 275, 40);
+        add(campoAutor);
 
-        JTextField campoTexto8 = crearCampoTextoEstilizado(100, 500, 275, 40);
-        add(campoTexto8);
+        JTextField campoCantidad = crearCampoTextoEstilizado(100, 450, 275, 40);
+        add(campoCantidad);
 
-        JTextField campoTexto9 = crearCampoTextoEstilizado(100, 550, 275, 40);
-        add(campoTexto9);
+        JTextField campoFechaPrestamo = crearCampoTextoEstilizado(100, 500, 275, 40);
+        add(campoFechaPrestamo);
 
-        JButton button4 = new JButton("Realizar");
-        button4.setBounds(100, 600, 100, 30);
-        estilizarBotonVerde(button4);
-        add(button4);
+        JTextField campoFechaDevolucion = crearCampoTextoEstilizado(100, 550, 275, 40);
+        add(campoFechaDevolucion);
+
+        JButton buttonPrestar = new JButton("Realizar");
+        buttonPrestar.setBounds(100, 600, 100, 30);
+        estilizarBotonVerde(buttonPrestar);
+        add(buttonPrestar);
     }
 
     private void agregardevolucion() {
@@ -164,22 +166,22 @@ public class BasicsFunctions extends JFrame {
         label10.setBounds(550, 350, 600, 40);
         add(label10);
 
-        JTextField textbox = crearCampoTextoEstilizado(550, 400, 300, 40);
-        add(textbox);
+        JTextField campoTitulo = crearCampoTextoEstilizado(550, 400, 300, 40);
+        add(campoTitulo);
 
-        JTextField textbox1 = crearCampoTextoEstilizado(550, 450, 300, 40);
-        add(textbox1);
+        JTextField campoCantidad = crearCampoTextoEstilizado(550, 450, 300, 40);
+        add(campoCantidad);
 
-        JTextField textbox2 = crearCampoTextoEstilizado(550, 500, 300, 40);
-        add(textbox2);
+        JTextField campoFechaPrestamo = crearCampoTextoEstilizado(550, 500, 300, 40);
+        add(campoFechaPrestamo);
 
-        JTextField textbox3 = crearCampoTextoEstilizado(550, 550, 300, 40);
-        add(textbox3);
+        JTextField campoFechaDevolucion = crearCampoTextoEstilizado(550, 550, 300, 40);
+        add(campoFechaDevolucion);
 
-        JButton button = new JButton("Recibir");
-        button.setBounds(550, 600, 100, 30);
-        estilizarBotonVerde(button);
-        add(button);
+        JButton buttonDevolver = new JButton("Recibir");
+        buttonDevolver.setBounds(550, 600, 100, 30);
+        estilizarBotonVerde(buttonDevolver);
+        add(buttonDevolver);
     }
 
 private void estilizarBotonNaranja(JButton boton) {
