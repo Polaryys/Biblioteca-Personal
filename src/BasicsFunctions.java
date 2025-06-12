@@ -11,7 +11,8 @@ public class BasicsFunctions extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-
+        ImageIcon icono = new ImageIcon(getClass().getResource("/Resources/Books.png"));
+        setIconImage(icono.getImage());
         agregarBarraBusqueda();
         agregarIngresoLibros();
         agregarPrestamoLibros();
@@ -55,15 +56,14 @@ public class BasicsFunctions extends JFrame {
     }
 
     private void agregarBarraBusqueda() {
-        JLabel label1 = new JLabel("Barra de Busqueda");
-        label1.setFont(new Font("Arial", Font.PLAIN, 24));
+        JLabel label1 = new JLabel("Barra de Búsqueda");
+        label1.setFont(new Font("Arial", Font.BOLD, 24));
         label1.setBounds(100, 70, 600, 40);
         add(label1);
 
         // Usamos crearCampoTextoEstilizado para el JTextField, con posición y tamaño
         JTextField campoTexto = crearCampoTextoEstilizado(100, 120, 300, 40);
 
-        // Ponemos el texto por defecto como "Buscar por título o autor"
         campoTexto.setText("Buscar por título o autor");
         campoTexto.setForeground(Color.GRAY); // Color gris para el placeholder
 
@@ -86,7 +86,7 @@ public class BasicsFunctions extends JFrame {
         add(campoTexto);
 
         JButton button2 = new JButton("Buscar");
-        button2.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+        button2.setFont(new Font("Segoe UI", Font.BOLD, 18));
         button2.setBounds(100, 170, 100, 30);
         button2.setFocusPainted(false);
         button2.setBackground(new Color(100, 149, 237)); // Azul suave normal
@@ -109,91 +109,93 @@ public class BasicsFunctions extends JFrame {
 
     private void agregarIngresoLibros() {
         JLabel label2 = new JLabel("Ingreso de Libros");
-        label2.setFont(new Font("Arial", Font.PLAIN, 24));
-        label2.setBounds(640, 50, 600, 40);
+        label2.setFont(new Font("Arial", Font.BOLD, 24));
+        label2.setBounds(550, 30, 600, 40);
         add(label2);
 
-        JTextField campoTexto2 = crearCampoTextoEstilizado(640, 100, 300, 40);
+        JTextField campoTexto2 = crearCampoTextoEstilizado(550, 80, 300, 40);
         add(campoTexto2);
 
-        JTextField campoTexto3 = crearCampoTextoEstilizado(640, 150, 300, 40);
+        JTextField campoTexto3 = crearCampoTextoEstilizado(550, 130, 300, 40);
         add(campoTexto3);
 
-        JTextField campoTexto4 = crearCampoTextoEstilizado(640, 200, 300, 40);
+        JTextField campoTexto4 = crearCampoTextoEstilizado(550, 180, 300, 40);
         add(campoTexto4);
 
-        JTextField campoTexto5 = crearCampoTextoEstilizado(640, 250, 300, 40);
+        JTextField campoTexto5 = crearCampoTextoEstilizado(550, 230, 300, 40);
         add(campoTexto5);
 
+        JTextField campoTexto11 = crearCampoTextoEstilizado(550, 280, 300, 40);
+        add(campoTexto11);
+
         JButton button3 = new JButton("Crear");
-        button3.setBounds(640, 300, 100, 30);
+        button3.setBounds(880, 285, 100, 30);
         estilizarBotonVerde(button3);
         add(button3);
     }
 
     private void agregarPrestamoLibros() {
         JLabel label3 = new JLabel("Préstamo de Libros");
-        label3.setFont(new Font("Arial", Font.PLAIN, 22));
-        label3.setBounds(60, 275, 600, 40);
+        label3.setFont(new Font("Arial", Font.BOLD, 24));
+        label3.setBounds(100, 350, 600, 40);
         add(label3);
 
-        JTextField campoTexto6 = crearCampoTextoEstilizado(60, 325, 275, 40);
+        JTextField campoTexto6 = crearCampoTextoEstilizado(100, 400, 275, 40);
         add(campoTexto6);
 
-        JTextField campoTexto7 = crearCampoTextoEstilizado(60, 375, 275, 40);
+        JTextField campoTexto7 = crearCampoTextoEstilizado(100, 450, 275, 40);
         add(campoTexto7);
 
-        JTextField campoTexto8 = crearCampoTextoEstilizado(60, 425, 275, 40);
+        JTextField campoTexto8 = crearCampoTextoEstilizado(100, 500, 275, 40);
         add(campoTexto8);
 
-        JTextField campoTexto9 = crearCampoTextoEstilizado(60, 475, 275, 40);
+        JTextField campoTexto9 = crearCampoTextoEstilizado(100, 550, 275, 40);
         add(campoTexto9);
 
         JButton button4 = new JButton("Realizar");
-        button4.setBounds(60, 525, 100, 30);
+        button4.setBounds(100, 600, 100, 30);
         estilizarBotonVerde(button4);
         add(button4);
     }
 
     private void agregardevolucion() {
         JLabel label10 = new JLabel("Devolución");
-        label10.setFont(new Font("Arial", Font.PLAIN, 24));
-        label10.setBounds(500, 350, 600, 40);
+        label10.setFont(new Font("Arial", Font.BOLD, 24));
+        label10.setBounds(550, 350, 600, 40);
         add(label10);
 
-        JTextField textbox = crearCampoTextoEstilizado(500, 400, 300, 40);
+        JTextField textbox = crearCampoTextoEstilizado(550, 400, 300, 40);
         add(textbox);
 
-        JTextField textbox1 = crearCampoTextoEstilizado(500, 450, 300, 40);
+        JTextField textbox1 = crearCampoTextoEstilizado(550, 450, 300, 40);
         add(textbox1);
 
-        JTextField textbox2 = crearCampoTextoEstilizado(500, 500, 300, 40);
+        JTextField textbox2 = crearCampoTextoEstilizado(550, 500, 300, 40);
         add(textbox2);
 
-        JTextField textbox3 = crearCampoTextoEstilizado(500, 550, 300, 40);
+        JTextField textbox3 = crearCampoTextoEstilizado(550, 550, 300, 40);
         add(textbox3);
 
         JButton button = new JButton("Recibir");
-        button.setBounds(500, 600, 100, 30);
+        button.setBounds(550, 600, 100, 30);
         estilizarBotonVerde(button);
         add(button);
     }
 
-// Método para estilizar botón Atrás con naranja oscuro y estilo similar
 private void estilizarBotonNaranja(JButton boton) {
     boton.setFont(new Font("Arial", Font.PLAIN, 18));
     boton.setFocusPainted(false);
-    boton.setBackground(new Color(204, 85, 0));  // Naranja oscuro
+    boton.setBackground(new Color(204, 85, 0));  
     boton.setForeground(Color.WHITE);
     boton.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
 
     boton.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseEntered(java.awt.event.MouseEvent evt) {
-            boton.setBackground(new Color(153, 51, 0));  // Naranja más oscuro al hover
+            boton.setBackground(new Color(153, 51, 0));  
             boton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
         public void mouseExited(java.awt.event.MouseEvent evt) {
-            boton.setBackground(new Color(204, 85, 0));  // Naranja oscuro normal
+            boton.setBackground(new Color(204, 85, 0));  
             boton.setCursor(Cursor.getDefaultCursor());
         }
     });
