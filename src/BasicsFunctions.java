@@ -245,10 +245,10 @@ public class BasicsFunctions extends JFrame {
         label3.setBounds(100, 300, 600, 40);
         add(label3);
 
-        campoTituloPrestamo = crearCampoTextoEstilizado(100, 350, 275, 40, "Título del libro");
+        campoTituloPrestamo = crearCampoTextoEstilizado(100, 350, 275, 40, "Título ");
         add(campoTituloPrestamo);
 
-        campoAutorPrestamo = crearCampoTextoEstilizado(100, 400, 275, 40, "Autor del libro");
+        campoAutorPrestamo = crearCampoTextoEstilizado(100, 400, 275, 40, "Autor");
         add(campoAutorPrestamo);
 
         campoCantidadPrestamo = crearCampoTextoEstilizado(100, 450, 275, 40, "Cantidad a prestar");
@@ -257,7 +257,7 @@ public class BasicsFunctions extends JFrame {
         campoFechaPrestamo = crearCampoTextoEstilizado(100, 500, 275, 40, "Fecha de préstamo (DD/MM/AAAA)");
         add(campoFechaPrestamo);
 
-        campoFechaDevolucionPrestamo = crearCampoTextoEstilizado(100, 550, 275, 40, "Fecha de devolución esperada (DD/MM/AAAA)");
+        campoFechaDevolucionPrestamo = crearCampoTextoEstilizado(100, 550, 275, 40, "Fecha de devolución (DD/MM/AAAA)");
         add(campoFechaDevolucionPrestamo);
 
         JButton buttonPrestar = new JButton("Realizar");
@@ -267,7 +267,7 @@ public class BasicsFunctions extends JFrame {
 
         buttonPrestar.addActionListener(e -> {
             String titulo = campoTituloPrestamo.getText();
-            String autor = campoAutorPrestamo.getText(); // Obtener el autor del campo
+            String autor = campoAutorPrestamo.getText();
             int cantidad;
             String fechaPrestamo = campoFechaPrestamo.getText();
             String fechaDevolucion = campoFechaDevolucionPrestamo.getText();
@@ -287,7 +287,7 @@ public class BasicsFunctions extends JFrame {
                 return;
             }
             if (cantidad <= 0) {
-                JOptionPane.showMessageDialog(this, "La cantidad a prestar debe ser mayor a cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La cantidad a prestar debe ser mayor a cero", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -295,7 +295,7 @@ public class BasicsFunctions extends JFrame {
             String tituloBuscado = titulo.trim().toLowerCase();
             String autorBuscado = autor.trim().toLowerCase();
             for (Libros libro : listaLibros) {
-                // Búsqueda por título y autor para una coincidencia precisa
+              
                 if (libro.getTitulo().trim().toLowerCase().equals(tituloBuscado) &&
                     libro.getAutor().trim().toLowerCase().equals(autorBuscado)) {
                     libroEncontrado = libro;
@@ -314,16 +314,14 @@ public class BasicsFunctions extends JFrame {
 
             libroEncontrado.setCantidad(libroEncontrado.getCantidad() - cantidad);
 
-            // Crear el objeto Prestamos, ahora pasando correctamente el autor
             listaPrestamos.add(new Prestamos(titulo, autor, cantidad, fechaPrestamo, fechaDevolucion));
             JOptionPane.showMessageDialog(this, "Préstamo registrado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
-            // Limpiar y resetear placeholders
-            campoTituloPrestamo.setText("Título del libro");
-            campoAutorPrestamo.setText("Autor del libro");
+            campoTituloPrestamo.setText("Título");
+            campoAutorPrestamo.setText("Autor");
             campoCantidadPrestamo.setText("Cantidad a prestar");
             campoFechaPrestamo.setText("Fecha de préstamo (DD/MM/AAAA)");
-            campoFechaDevolucionPrestamo.setText("Fecha de devolución esperada (DD/MM/AAAA)");
+            campoFechaDevolucionPrestamo.setText("Fecha de devolución (DD/MM/AAAA)");
             campoTituloPrestamo.setForeground(Color.GRAY);
             campoAutorPrestamo.setForeground(Color.GRAY);
             campoCantidadPrestamo.setForeground(Color.GRAY);
@@ -332,17 +330,16 @@ public class BasicsFunctions extends JFrame {
         });
     }
 
-    // --- SECCIÓN DE DEVOLUCIÓN DE LIBROS ---
     private void agregardevolucion() {
         JLabel label10 = new JLabel("Devolución de Libros");
         label10.setFont(new Font("Arial", Font.BOLD, 24));
         label10.setBounds(550, 350, 600, 40);
         add(label10);
 
-        campoTituloDevolucion = crearCampoTextoEstilizado(550, 400, 300, 40, "Título del libro a devolver");
+        campoTituloDevolucion = crearCampoTextoEstilizado(550, 400, 300, 40, "Título a devolver");
         add(campoTituloDevolucion);
 
-        campoAutorDevolucion = crearCampoTextoEstilizado(550, 450, 300, 40, "Autor del libro a devolver"); // Nuevo campo para el autor
+        campoAutorDevolucion = crearCampoTextoEstilizado(550, 450, 300, 40, "Autor"); // Nuevo campo para el autor
         add(campoAutorDevolucion);
 
         campoCantidadDevolucion = crearCampoTextoEstilizado(550, 500, 300, 40, "Cantidad a devolver");
@@ -361,7 +358,7 @@ public class BasicsFunctions extends JFrame {
 
         buttonDevolver.addActionListener(e -> {
             String titulo = campoTituloDevolucion.getText();
-            String autor = campoAutorDevolucion.getText(); // Obtener el autor para la devolución
+            String autor = campoAutorDevolucion.getText(); 
             int cantidad;
             String fechaPrestamo = campoFechaPrestamoDevolucion.getText();
             String fechaDevolucionRealStr = campoFechaDevolucionReal.getText();
@@ -372,7 +369,6 @@ public class BasicsFunctions extends JFrame {
                 return;
             }
 
-            // Validar que los campos no estén vacíos o con el texto del placeholder
             if (titulo.isEmpty() || autor.isEmpty() || fechaPrestamo.isEmpty() || fechaDevolucionRealStr.isEmpty() ||
                 titulo.equals("Título del libro a devolver") || autor.equals("Autor del libro a devolver") ||
                 fechaPrestamo.equals("Fecha de préstamo (DD/MM/AAAA)") || fechaDevolucionRealStr.equals("Fecha real de devolución (DD/MM/AAAA)")) {
@@ -380,7 +376,7 @@ public class BasicsFunctions extends JFrame {
                 return;
             }
             if (cantidad <= 0) {
-                JOptionPane.showMessageDialog(this, "La cantidad a devolver debe ser mayor a cero.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "La cantidad a devolver debe ser mayor a cero", "Error", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
 
@@ -411,17 +407,16 @@ public class BasicsFunctions extends JFrame {
             int nuevaCantidadPrestada = prestamoEncontrado.getCantidadPrestada() - cantidad;
             if (nuevaCantidadPrestada > 0) {
                 prestamoEncontrado.setCantidadPrestada(nuevaCantidadPrestada);
-                prestamoEncontrado.setFechaDevolucionReal(fechaDevolucionRealStr); // Registrar fecha de devolución real
+                prestamoEncontrado.setFechaDevolucionReal(fechaDevolucionRealStr);
                 JOptionPane.showMessageDialog(this, "Devolución parcial registrada correctamente. Cantidad restante prestada: " + nuevaCantidadPrestada, "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                listaPrestamos.remove(prestamoEncontrado); // Eliminar si se devuelve por completo
-                prestamoEncontrado.setFechaDevolucionReal(fechaDevolucionRealStr); // Registrar fecha de devolución real
+                listaPrestamos.remove(prestamoEncontrado);
+                prestamoEncontrado.setFechaDevolucionReal(fechaDevolucionRealStr); 
                 JOptionPane.showMessageDialog(this, "Devolución total registrada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            // Limpiar y resetear placeholders
-            campoTituloDevolucion.setText("Título del libro a devolver");
-            campoAutorDevolucion.setText("Autor del libro a devolver");
+            campoTituloDevolucion.setText("Título a devolver");
+            campoAutorDevolucion.setText("Autor");
             campoCantidadDevolucion.setText("Cantidad a devolver");
             campoFechaPrestamoDevolucion.setText("Fecha de préstamo (DD/MM/AAAA)");
             campoFechaDevolucionReal.setText("Fecha real de devolución (DD/MM/AAAA)");
@@ -439,7 +434,7 @@ public class BasicsFunctions extends JFrame {
         estilizarBotonNaranja(button1);
 
         button1.addActionListener(e -> {
-            // Asegúrate de que tu clase Interfaz exista y sea accesible
+            
             Interfaz mainwindow = new Interfaz();
             mainwindow.setVisible(true);
             dispose();
