@@ -26,7 +26,6 @@ public class Catalogo {
         }
     }
 
-    // Eliminar libro por nombre
     public static boolean eliminarLibro(String libro) {
         if (cabeza == null) return false;
 

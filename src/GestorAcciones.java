@@ -18,16 +18,14 @@ public class GestorAcciones {
         listeners.add(listener);
     }
 
-    // Método para hacer push y notificar
     public static void push(String texto) {
         pila.push(texto);
-        // Notificar a todos los listeners
+
         for (Listener l : listeners) {
             l.onNuevaAccion(texto);
         }
     }
 
-    // Opcional: método para obtener toda la pila
     public static Stack<String> getPila() {
         return pila;
     }
