@@ -97,7 +97,7 @@ public class EstructuraDatos extends JFrame implements GestorAcciones.Listener, 
                 for (String pendiente : Pendientes.getCola()) {
                     areaPrestamos.append(pendiente + "\n");
                 }
-                GestorAcciones.push("Se recibio el préstamo: " + entregado);
+                GestorAcciones.push("Se Proceso: " + entregado);
             } else {
                 JOptionPane.showMessageDialog(this, "No hay préstamos pendientes.");
             }

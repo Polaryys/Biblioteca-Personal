@@ -56,9 +56,10 @@ public class Interfaz extends JFrame {
         });
 
         button4.addActionListener(e -> System.exit(0));
-        Catalogo.agregarLibro("1984 - George Orwell");
-        Catalogo.agregarLibro("Cien años de soledad - Gabriel García Márquez");
-        Catalogo.agregarLibro("El Principito - Antoine de Saint-Exupéry");
+        Catalogo.agregarLibro(Ciphered.cifrar("1984 - George Orwell"));
+        Catalogo.agregarLibro(Ciphered.cifrar("Cien años de soledad - Gabriel García Márquez"));
+        Catalogo.agregarLibro(Ciphered.cifrar("El Principito - Antoine de Saint-Exupéry"));
+        
         add(button1);
         add(button2);
         add(button3);
@@ -72,8 +73,9 @@ public class Interfaz extends JFrame {
     java.util.List<String> libros = Catalogo.obtenerLibros();
     StringBuilder sb = new StringBuilder("Catálogo de Libros:\n\n");
     for (String libro : libros) {
-        sb.append("• ").append(libro).append("\n");
-    }
+    String textoDescifrado = Ciphered.descifrar(libro);
+    sb.append("• ").append(textoDescifrado).append("\n");
+}
     areaCatalogo.setText(sb.toString());
 
     JScrollPane scroll = new JScrollPane(areaCatalogo);

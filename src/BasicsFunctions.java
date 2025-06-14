@@ -29,7 +29,6 @@ public class BasicsFunctions extends JFrame {
         ImageIcon icono = new ImageIcon(getClass().getResource("/Resources/Books.png"));
         setIconImage(icono.getImage());
 
-        // Libros de ejemplo
         listaLibros.add(new Libros("Cien años de soledad", "Gabriel García Márquez", "Novela", 1967, 10));
         listaLibros.add(new Libros("El Principito", "Antoine de Saint-Exupéry", "Fábula", 1943, 7));
         listaLibros.add(new Libros("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela", 1605, 6));
@@ -41,7 +40,6 @@ public class BasicsFunctions extends JFrame {
         agregarBotonAtras();
     }
 
-    // Método auxiliar para campos de texto estilizados con placeholder
     private JTextField crearCampoTextoEstilizado(int x, int y, int ancho, int alto, String placeholder) {
         JTextField campoTexto = new JTextField();
         campoTexto.setFont(new Font("Segoe UI", Font.PLAIN, 22));
@@ -75,7 +73,6 @@ public class BasicsFunctions extends JFrame {
         return campoTexto;
     }
 
-    // Método auxiliar para botones verdes
     private void estilizarBotonVerde(JButton boton) {
         boton.setFont(new Font("Arial", Font.PLAIN, 18));
         boton.setFocusPainted(false);
@@ -94,7 +91,6 @@ public class BasicsFunctions extends JFrame {
         });
     }
 
-    // Método auxiliar para botones naranjas
     private void estilizarBotonNaranja(JButton boton) {
         boton.setFont(new Font("Arial", Font.PLAIN, 18));
         boton.setFocusPainted(false);
@@ -151,10 +147,12 @@ public class BasicsFunctions extends JFrame {
 
             StringBuilder resultados = new StringBuilder();
             for (Libros libro : listaLibros) {
-                if (libro.getTitulo().toLowerCase().contains(consulta) ||
+                String tituloDescifrado = Ciphered.descifrar(libro.getTitulo()).toLowerCase();
+
+                if (tituloDescifrado.contains(consulta) ||
                     libro.getAutor().toLowerCase().contains(consulta) ||
-                    libro.getGenero().toLowerCase().contains(consulta)) {
-                    resultados.append("Título: ").append(libro.getTitulo())
+                    libro.getGenero().toLowerCase().contains(consulta))  {
+                    resultados.append("Título: ").append(tituloDescifrado)
                                   .append(" | Autor: ").append(libro.getAutor())
                                   .append(" | Género: ").append(libro.getGenero())
                                   .append(" | Año: ").append(libro.getAñoPublicacion())
@@ -211,18 +209,19 @@ public class BasicsFunctions extends JFrame {
                 return;
             }
 
-            // Validar que los campos no estén vacíos o con el texto del placeholder
             if (titulo.isEmpty() || autor.isEmpty() || genero.isEmpty() ||
                 titulo.equals("Título") || autor.equals("Autor") || genero.equals("Género") ||
                 campoAñoPublicacion.getText().equals("Año de Publicación") || campoCantidad.getText().equals("Cantidad")) {
                 JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            listaLibros.add(new Libros(titulo, autor, genero, añoPublicacion, cantidad));
+            String Cipher = Ciphered.cifrar(titulo);
+            listaLibros.add(new Libros(Cipher, autor, genero, añoPublicacion, cantidad));
             JOptionPane.showMessageDialog(this, "Libro agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             GestorAcciones.push("Se ha ingresado el libro:" + titulo +","+ añoPublicacion);
-            Catalogo.agregarLibro(titulo + " - " + autor);
+
+            Catalogo.agregarLibro(Ciphered.cifrar(titulo + " - " + autor));
+
             campoTitulo.setText("Título");
             campoAutor.setText("Autor");
             campoGenero.setText("Género");
@@ -292,14 +291,17 @@ public class BasicsFunctions extends JFrame {
             Libros libroEncontrado = null;
             String tituloBuscado = titulo.trim().toLowerCase();
             String autorBuscado = autor.trim().toLowerCase();
-            for (Libros libro : listaLibros) {
-              
-                if (libro.getTitulo().trim().toLowerCase().equals(tituloBuscado) &&
-                    libro.getAutor().trim().toLowerCase().equals(autorBuscado)) {
-                    libroEncontrado = libro;
-                    break;
-                }
-            }
+
+                for (Libros libro : listaLibros) {
+
+            String tituloDescifrado = Ciphered.descifrar(libro.getTitulo()).trim().toLowerCase();
+    
+    if (tituloDescifrado.equals(tituloBuscado) &&
+        libro.getAutor().trim().toLowerCase().equals(autorBuscado)) {
+        libroEncontrado = libro;
+        break;
+    }
+}
 
             if (libroEncontrado == null) {
                 JOptionPane.showMessageDialog(this, "El libro no existe en la biblioteca o el autor es incorrecto.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -381,7 +383,7 @@ public class BasicsFunctions extends JFrame {
 
             Prestamos prestamoEncontrado = null;
             for (Prestamos prestamo : listaPrestamos) {
-                // Ahora buscar el préstamo usando título, autor y fecha de préstamo
+               
                 if (prestamo.getTituloLibro().equalsIgnoreCase(titulo) &&
                     prestamo.getAutor().equalsIgnoreCase(autor) && // Comparar también el autor
                     prestamo.getFechaPrestamo().equalsIgnoreCase(fechaPrestamo) &&
@@ -389,20 +391,27 @@ public class BasicsFunctions extends JFrame {
                     prestamoEncontrado = prestamo;
                     break;
                 }
-            }
+            
+}
             if (prestamoEncontrado == null) {
                 JOptionPane.showMessageDialog(this, "No se encontró un préstamo con esos datos o la cantidad a devolver es incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Aumentar la cantidad del libro en la biblioteca
             for (Libros libro : listaLibros) {
-                if (libro.getTitulo().equalsIgnoreCase(titulo) && libro.getAutor().equalsIgnoreCase(autor)) { // Coincidir por título y autor
-                    libro.setCantidad(libro.getCantidad() + cantidad);
-                    break;
-                }
-            }
+    String tituloDescifrado = Ciphered.descifrar(libro.getTitulo()).trim().toLowerCase();
+    String autorLibro = libro.getAutor().trim().toLowerCase();
+    String tituloUsuario = titulo.trim().toLowerCase();
+    String autorUsuario = autor.trim().toLowerCase();
 
+    System.out.println("Comparando títulos: libro='" + tituloDescifrado + "' vs usuario='" + tituloUsuario + "'");
+    System.out.println("Comparando autores: libro='" + autorLibro + "' vs usuario='" + autorUsuario + "'");
+
+    if (tituloDescifrado.equals(tituloUsuario) && autorLibro.equals(autorUsuario)) {
+        libro.setCantidad(libro.getCantidad() + cantidad);
+        break;
+    }
+}
             int nuevaCantidadPrestada = prestamoEncontrado.getCantidadPrestada() - cantidad;
             if (nuevaCantidadPrestada > 0) {
                 prestamoEncontrado.setCantidadPrestada(nuevaCantidadPrestada);
