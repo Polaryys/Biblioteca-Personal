@@ -223,8 +223,8 @@ public class BasicsFunctions extends JFrame {
 
             listaLibros.add(new Libros(titulo, autor, genero, añoPublicacion, cantidad));
             JOptionPane.showMessageDialog(this, "Libro agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            GestorAcciones.push("Se ha ingresado el libro:" + titulo +","+ añoPublicacion);
 
-            // Limpiar y resetear placeholders
             campoTitulo.setText("Título");
             campoAutor.setText("Autor");
             campoGenero.setText("Género");
@@ -316,7 +316,8 @@ public class BasicsFunctions extends JFrame {
 
             listaPrestamos.add(new Prestamos(titulo, autor, cantidad, fechaPrestamo, fechaDevolucion));
             JOptionPane.showMessageDialog(this, "Préstamo registrado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-
+            GestorAcciones.push("Se ha Prestado el libro:" + titulo);
+            Pendientes.agregarPendiente("Pendiente de Entregar libro: "+ titulo + " hasta la fecha "+ fechaPrestamo);
             campoTituloPrestamo.setText("Título");
             campoAutorPrestamo.setText("Autor");
             campoCantidadPrestamo.setText("Cantidad a prestar");
@@ -414,7 +415,7 @@ public class BasicsFunctions extends JFrame {
                 prestamoEncontrado.setFechaDevolucionReal(fechaDevolucionRealStr); 
                 JOptionPane.showMessageDialog(this, "Devolución total registrada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             }
-
+            GestorAcciones.push("Se ha devuelto el libro:" + titulo);
             campoTituloDevolucion.setText("Título a devolver");
             campoAutorDevolucion.setText("Autor");
             campoCantidadDevolucion.setText("Cantidad a devolver");
