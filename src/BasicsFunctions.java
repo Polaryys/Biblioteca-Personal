@@ -10,13 +10,11 @@ public class BasicsFunctions extends JFrame {
     private JTextField campoFechaPrestamo;
     private JTextField campoFechaDevolucionPrestamo;
 
-    // Campos para la devolución
     private JTextField campoTituloDevolucion;
-    private JTextField campoAutorDevolucion; // Nuevo campo para el autor en la devolución
+    private JTextField campoAutorDevolucion;
     private JTextField campoCantidadDevolucion;
     private JTextField campoFechaPrestamoDevolucion;
     private JTextField campoFechaDevolucionReal;
-
 
     private ArrayList<Libros> listaLibros = new ArrayList<>();
     private ArrayList<Prestamos> listaPrestamos = new ArrayList<>();
@@ -224,7 +222,7 @@ public class BasicsFunctions extends JFrame {
             listaLibros.add(new Libros(titulo, autor, genero, añoPublicacion, cantidad));
             JOptionPane.showMessageDialog(this, "Libro agregado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             GestorAcciones.push("Se ha ingresado el libro:" + titulo +","+ añoPublicacion);
-
+            Catalogo.agregarLibro(titulo + " - " + autor);
             campoTitulo.setText("Título");
             campoAutor.setText("Autor");
             campoGenero.setText("Género");
