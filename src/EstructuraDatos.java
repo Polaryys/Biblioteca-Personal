@@ -82,9 +82,9 @@ public class EstructuraDatos extends JFrame implements GestorAcciones.Listener, 
         JScrollPane scroll2 = new JScrollPane(areaPrestamos);
         scroll2.setBounds(580, 130, 450, 200);
 
-        JButton entregarBtn = new JButton("Entregar siguiente");
+        JButton entregarBtn = new JButton("Recibir prestamo más antiguo");
         entregarBtn.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-        entregarBtn.setBounds(580, 350, 200, 35);
+        entregarBtn.setBounds(580, 350, 300, 35);
         entregarBtn.setFocusPainted(false);
         entregarBtn.setBackground(new Color(0, 102, 153));
         entregarBtn.setForeground(Color.WHITE);
