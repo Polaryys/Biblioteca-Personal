@@ -11,29 +11,25 @@ public class Interfaz extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Ícono de la ventana
         ImageIcon icono = new ImageIcon(getClass().getResource("/Resources/Books.png"));
         setIconImage(icono.getImage());
 
-        // Fondo claro
         getContentPane().setBackground(new Color(245, 245, 245));
         setLayout(null);
 
-        // Fuente moderna
+  
         Font fuenteTitulo = new Font("Segoe UI", Font.BOLD, 30);
         Font fuenteBoton = new Font("Segoe UI", Font.PLAIN, 24);
         Font fuenteSalir = new Font("Segoe UI", Font.PLAIN, 18);
         Color colorBoton = new Color(70, 130, 180);
         Color colorBotonHover = colorBoton.darker();
 
-        // Título
         JLabel label1 = new JLabel("¡Bienvenido a tu biblioteca personal!");
         label1.setFont(fuenteTitulo);
         label1.setForeground(new Color(33, 37, 41));
         label1.setBounds(250, 30, 700, 40);
         add(label1);
 
-        // Botones
         JButton button1 = crearBoton("Libros", fuenteBoton, colorBoton, colorBotonHover, 180, 110);
         JButton button2 = crearBoton("Gestión", fuenteBoton, colorBoton, colorBotonHover, 420, 110);
         JButton button3 = crearBoton("Estadísticas", fuenteBoton, colorBoton, colorBotonHover, 660, 110);
@@ -61,14 +57,12 @@ public class Interfaz extends JFrame {
 
         button4.addActionListener(e -> System.exit(0));
 
-        // Agregar botones
         add(button1);
         add(button2);
         add(button3);
         add(button4);
     }
 
-    // Método para crear botones estilizados con hover
     private JButton crearBoton(String texto, Font fuente, Color base, Color hover, int x, int y) {
         JButton boton = new JButton(texto);
         boton.setFont(fuente);
