@@ -56,11 +56,29 @@ public class Interfaz extends JFrame {
         });
 
         button4.addActionListener(e -> System.exit(0));
-
+        Catalogo.agregarLibro("1984 - George Orwell");
+        Catalogo.agregarLibro("Cien años de soledad - Gabriel García Márquez");
+        Catalogo.agregarLibro("El Principito - Antoine de Saint-Exupéry");
         add(button1);
         add(button2);
         add(button3);
         add(button4);
+        JTextArea areaCatalogo = new JTextArea();
+    areaCatalogo.setEditable(false);
+    areaCatalogo.setFont(new Font("Segoe UI", Font.PLAIN, 24));
+    areaCatalogo.setBackground(Color.WHITE);
+    areaCatalogo.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+
+    java.util.List<String> libros = Catalogo.obtenerLibros();
+    StringBuilder sb = new StringBuilder("Catálogo de Libros:\n\n");
+    for (String libro : libros) {
+        sb.append("• ").append(libro).append("\n");
+    }
+    areaCatalogo.setText(sb.toString());
+
+    JScrollPane scroll = new JScrollPane(areaCatalogo);
+    scroll.setBounds(180, 190, 720, 460);
+    add(scroll);
     }
 
     private JButton crearBoton(String texto, Font fuente, Color base, Color hover, int x, int y) {
@@ -82,6 +100,7 @@ public class Interfaz extends JFrame {
             }
         });
         return boton;
+
     }
 
     public static void main(String[] args) {
